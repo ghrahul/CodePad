@@ -26,6 +26,8 @@ import java.awt.TextArea;
 import javax.swing.ImageIcon;
 import org.fife.ui.rtextarea.*;
 import org.fife.ui.rsyntaxtextarea.*;
+import org.fife.ui.autocomplete.*;
+
 
 public class TextEditor extends JFrame {
 
@@ -43,7 +45,7 @@ public class TextEditor extends JFrame {
 			public void run() {
 				try {
 					TextEditor frame = new TextEditor();
-					frame.setTitle("TextPad");
+					frame.setTitle("CodePad");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,6 +61,11 @@ public class TextEditor extends JFrame {
 		// adding syntax highlighting
 		textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
 		
+		//adding autocomplete functionality
+		
+		CompletionProvider provider = createCompletionProvider();
+		AutoCompletion ac = new AutoCompletion(provider);
+		ac.install(textArea);
 		
 		
 		
@@ -355,6 +362,32 @@ public class TextEditor extends JFrame {
 		
 	
 		contentPane.add(textArea, BorderLayout.CENTER);
+	}
+
+	private CompletionProvider createCompletionProvider() {
+		//this is a default completion provider which does not need to know any language symantics
+		DefaultCompletionProvider provider = new DefaultCompletionProvider();
+		
+		//adding some basic completion
+		provider.addCompletion(new BasicCompletion(provider, "abstract"));
+		provider.addCompletion(new BasicCompletion(provider, "assert"));
+		provider.addCompletion(new BasicCompletion(provider, "break"));
+		provider.addCompletion(new BasicCompletion(provider, "case"));
+		provider.addCompletion(new BasicCompletion(provider, "trasient"));
+		provider.addCompletion(new BasicCompletion(provider, "try"));
+		provider.addCompletion(new BasicCompletion(provider, "try"));
+		provider.addCompletion(new BasicCompletion(provider, "void"));
+		provider.addCompletion(new BasicCompletion(provider, "volatile"));
+		provider.addCompletion(new BasicCompletion(provider, "while"));
+		
+		//these are some shorthand completions
+		provider.addCompletion(new ShorthandCompletion(provider, "sysout", "System.out.println(","System.out.println("));
+		provider.addCompletion(new ShorthandCompletion(provider, "syserr", "System.err.println(","System.err.println("));
+		return provider;
+		
+		
+		
+		
 	}
 
 }
