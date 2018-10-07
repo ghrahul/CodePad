@@ -7,12 +7,14 @@ import java.awt.FileDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.KeyStroke;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileFilter;
 import javax.xml.soap.Text;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -37,7 +39,7 @@ public class TextEditor extends JFrame {
 	String str;
 	int n,position;
 
-	/**
+	/**0
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -58,6 +60,7 @@ public class TextEditor extends JFrame {
 	 * Create the frame.
 	 */
 	public TextEditor() {
+		
 		// adding syntax highlighting
 		textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
 		textArea.setCodeFoldingEnabled(true);
@@ -70,7 +73,7 @@ public class TextEditor extends JFrame {
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 397, 456);
+		setBounds(100, 100, 397, 516);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -83,44 +86,35 @@ public class TextEditor extends JFrame {
 		mntmOpen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_0, ActionEvent.CTRL_MASK));
 		mntmOpen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// choosing file
+				JFileChooser j = new JFileChooser("f:");
+				//invoking file open dialog
+				int r = j.showOpenDialog(null);
 				
-				JFileChooser chooser = new JFileChooser();
-				
-				chooser.addChoosableFileFilter(new FileFilter() {
-					
-					@Override
-					public String getDescription() {
-						// TODO Auto-generated method stub
-						return "All files";
+				if(r == JFileChooser.APPROVE_OPTION)
+				{
+					File fi = new File(j.getSelectedFile().getAbsolutePath());
+					filename = j.getSelectedFile().getAbsolutePath();
+					try {
+						
+						String s1 = "", sl = "";
+						FileReader fr = new FileReader(fi);
+						BufferedReader br = new BufferedReader(fr);
+						sl = br.readLine();
+						while((s1 = br.readLine()) != null)
+						{
+							sl = sl + "\n" +s1;
+						}
+						textArea.setText(sl);
+						
+					} catch (Exception e2) {
+						// TODO: handle exception
+						
+						e2.printStackTrace();
 					}
 					
-					@Override
-					public boolean accept(File f) {
-						// TODO Auto-generated method stub
-						return f.getName().endsWith(".txt");
-					}
-				});
-				
-				chooser.setCurrentDirectory(new File("C:\\Documents"));
-				chooser.showOpenDialog(null);
-				
-				File file = chooser.getSelectedFile();
-				filename = file.getAbsolutePath();
-				//file open
-				try {
-					
-					FileReader filereader = new FileReader(filename);
-					BufferedReader buffereader = new BufferedReader(filereader);
-					
-					textArea.setText(buffereader.readLine());
-					buffereader.close();
-					
-					
-					
-				} catch (Exception e2) {
-					// TODO: handle exception
-					e2.printStackTrace();
 				}
+				
 				
 				TextEditor.this.setTitle(filename);
 				
@@ -197,20 +191,14 @@ public class TextEditor extends JFrame {
 					
 				}
 				
-				else 
+				else
 				{
-					FileDialog dialog1 = new FileDialog(TextEditor.this, "Save As", FileDialog.SAVE);
-					dialog1.setVisible(true);
-					String s7 = dialog1.getDirectory();
-					String s8 = TextEditor.this.getTitle();
-					String s9 = s7+ s8;
 					String s6 = textArea.getText();
 					int len1 = s6.length();
 					byte buf[] = s6.getBytes();
-					File f1 = new File(s9);
+					File f1 = new File(filename);
 					FileOutputStream fobj1 = null;
-					
-					try {
+                    try {
 						
 						fobj1 = new FileOutputStream(f1);
 						
@@ -219,8 +207,7 @@ public class TextEditor extends JFrame {
 						// TODO: handle exception
 						e2.printStackTrace();
 					}
-					
-					for(int k=0;k<len1;k++)
+                    for(int k=0;k<len1;k++)
 					{
 						try {
 							fobj1.write(buf[k]);
@@ -231,8 +218,8 @@ public class TextEditor extends JFrame {
 							// TODO: handle exception
 						}
 					}
-					
-					try {
+                    
+                    try {
 						
 						fobj1.close();
 						
@@ -241,9 +228,11 @@ public class TextEditor extends JFrame {
 						e3.printStackTrace();
 						// TODO: handle exception
 					}
+                    TextEditor.this.setTitle(filename);
 					
-					TextEditor.this.setTitle(dialog1.getFile());
+					
 				}
+				
 				
 				
 			}
@@ -362,6 +351,12 @@ public class TextEditor extends JFrame {
 		
 	
 		contentPane.add(textArea, BorderLayout.CENTER);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		contentPane.add(scrollPane, BorderLayout.EAST);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		contentPane.add(scrollPane_1, BorderLayout.SOUTH);
 	}
 
 	private CompletionProvider createCompletionProvider() {
