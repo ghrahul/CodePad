@@ -312,8 +312,8 @@ public class TextEditor extends JFrame {
 		mntmCopy.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
 		mntmCopy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				str = textArea.getSelectedText();
+				textArea.copy();
+				//str = textArea.getSelectedText();
 			}
 		});
 		mntmCopy.setIcon(new ImageIcon("C:\\Users\\rahul\\Downloads\\copy.jpg"));
@@ -323,11 +323,12 @@ public class TextEditor extends JFrame {
 		mntmCut.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
 		mntmCut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				textArea.cut();
+				/*
 			    str = textArea.getSelectedText();
 				n = textArea.getText().indexOf(str);
 				textArea.replaceRange("", n, str.length());
-				
+				*/
 			}
 		});
 		mntmCut.setIcon(new ImageIcon("C:\\Users\\rahul\\Downloads\\cut(1).jpg"));
@@ -337,9 +338,9 @@ public class TextEditor extends JFrame {
 		mntmPaste.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, ActionEvent.CTRL_MASK));
 		mntmPaste.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				position = textArea.getCaretPosition();
-				textArea.insert(str, position);
+				textArea.paste();
+				//position = textArea.getCaretPosition();
+				//textArea.insert(str, position);
 			}
 		});
 		mntmPaste.setIcon(new ImageIcon("C:\\Users\\rahul\\Downloads\\paste.jpg"));
