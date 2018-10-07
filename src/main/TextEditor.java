@@ -24,11 +24,13 @@ import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.TextArea;
 import javax.swing.ImageIcon;
+import org.fife.ui.rtextarea.*;
+import org.fife.ui.rsyntaxtextarea.*;
 
 public class TextEditor extends JFrame {
 
 	private JPanel contentPane;
-	TextArea textArea = new TextArea();
+	RSyntaxTextArea textArea = new RSyntaxTextArea();
 	String filename;
 	String str;
 	int n,position;
@@ -54,6 +56,21 @@ public class TextEditor extends JFrame {
 	 * Create the frame.
 	 */
 	public TextEditor() {
+		
+		//adding syntax highlighting
+		JPanel cp = new JPanel(new BorderLayout());
+		textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+		textArea.setCodeFoldingEnabled(true);
+		RTextScrollPane sp = new RTextScrollPane(textArea);
+		cp.add(sp);
+		setContentPane(cp);
+		
+		pack();
+		setLocationRelativeTo(null);
+		
+		
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 642, 408);
 		
