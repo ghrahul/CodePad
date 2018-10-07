@@ -56,23 +56,14 @@ public class TextEditor extends JFrame {
 	 * Create the frame.
 	 */
 	public TextEditor() {
-		
-		//adding syntax highlighting
-		JPanel cp = new JPanel(new BorderLayout());
+		// adding syntax highlighting
 		textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
-		textArea.setCodeFoldingEnabled(true);
-		RTextScrollPane sp = new RTextScrollPane(textArea);
-		cp.add(sp);
-		setContentPane(cp);
-		
-		pack();
-		setLocationRelativeTo(null);
 		
 		
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 642, 408);
+		setBounds(100, 100, 397, 456);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -156,7 +147,7 @@ public class TextEditor extends JFrame {
 					dialog1.setVisible(true);
 					String s7 = dialog1.getDirectory();
 					String s8 = dialog1.getFile();
-					String s9 = s7+ s8+ ".txt";
+					String s9 = s7+ s8;
 					String s6 = textArea.getText();
 					int len1 = s6.length();
 					byte buf[] = s6.getBytes();
@@ -205,7 +196,7 @@ public class TextEditor extends JFrame {
 					dialog1.setVisible(true);
 					String s7 = dialog1.getDirectory();
 					String s8 = TextEditor.this.getTitle();
-					String s9 = s7+ s8+ ".txt";
+					String s9 = s7+ s8;
 					String s6 = textArea.getText();
 					int len1 = s6.length();
 					byte buf[] = s6.getBytes();
@@ -262,7 +253,7 @@ public class TextEditor extends JFrame {
 				dialog1.setVisible(true);
 				String s7 = dialog1.getDirectory();
 				String s8 = dialog1.getFile();
-				String s9 = s7+ s8+ ".txt";
+				String s9 = s7+ s8;
 				String s6 = textArea.getText();
 				int len1 = s6.length();
 				byte buf[] = s6.getBytes();
