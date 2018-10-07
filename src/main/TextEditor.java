@@ -60,13 +60,13 @@ public class TextEditor extends JFrame {
 	public TextEditor() {
 		// adding syntax highlighting
 		textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
-		
-		//adding autocomplete functionality
+		textArea.setCodeFoldingEnabled(true);
+		//adding auto complete functionality
 		
 		CompletionProvider provider = createCompletionProvider();
 		AutoCompletion ac = new AutoCompletion(provider);
 		ac.install(textArea);
-		
+		//
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
