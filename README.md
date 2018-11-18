@@ -15,6 +15,7 @@ This is text editor with Java Language Support.This has functionalities like cut
 * Doxygen for structure analysis tool
 * MarkDown for documentation
 * Launch4j for creating executable file from jar file
+* Programming languages used - Java, HTML, Javascript, CSS
 
 
 ## Demo
@@ -24,8 +25,8 @@ This is text editor with Java Language Support.This has functionalities like cut
 ## Download 
 [Texteditornew.exe](https://github.com/ghrahul/TextEditor/tree/master/Exe%20file/exe)
 <h1>Contributors</h1>
-Rahul Ghosh
-Purvi Madhusudhan
-Nandini Sinha
+* Rahul Ghosh
+* Purvi Madhusudhan
+* Nandini Sinha
 
 
