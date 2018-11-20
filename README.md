@@ -15,7 +15,7 @@ This is a text editor with Java Language Support.This has functionalities like c
 * Doxygen for structure analysis tool
 * MarkDown for documentation
 * Launch4j for creating executable file from jar file
-* Programming languages used - Java, HTML, Javascript, CSS
+* Technoligies used - Java,Swing
 
 
 ## Demo
