@@ -25,8 +25,8 @@ This is a text editor with Java Language Support.This has functionalities like c
 ## Download 
 [Texteditornew.exe](https://github.com/ghrahul/TextEditor/tree/master/Exe%20file/exe)
 ## Contributors
-* Rahul Ghosh
-* Purvi Madhusudhan
-* Nandini Sinha
+* Rahul Ghosh - S4 - U101116FCS096 
+* Purvi Madhusudhan - S4 - U101116FCS094
+* Nandini Sinha - S4 - U101116FCS075
 
 
