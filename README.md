@@ -19,6 +19,8 @@ This is a text editor with Java Language Support.This has functionalities like c
 
 
 ## Demo
+![20190120_235836](https://user-images.githubusercontent.com/22416933/51443535-1d506100-1d10-11e9-9627-8c62ab7def26.gif)
+
 ![screenshot 175](https://user-images.githubusercontent.com/22416933/48677613-6a437a00-eb9d-11e8-87e1-46ee8c65031b.png)
 ![screenshot 176](https://user-images.githubusercontent.com/22416933/48677686-898ed700-eb9e-11e8-8ef6-03f9e1d152c7.png)
 
