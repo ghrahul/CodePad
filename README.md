@@ -4,8 +4,8 @@
 
 This is a text editor with Java Language Support.This has functionalities like cut,copy,paste,new file creation,opening file,syntax highlighting,autocomplete etc.
 
-## Project Plan
-[Project Plan](https://github.com/ghrahul/TextEditor/blob/master/Programming%20Tools%20Project%20Plan.pdf)
+
+
 
 ## Programming Tools Used
 
